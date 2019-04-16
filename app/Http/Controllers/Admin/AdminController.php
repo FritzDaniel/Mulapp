@@ -18,9 +18,4 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function profile()
-    {
-        $data = User::where('username','=','admin')->first();
-        return view('admin.menu.profile.index',compact('data'));
-    }
 }

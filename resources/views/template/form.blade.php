@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('template.layouts.app')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        Edit Profile
+                        Header
                     </div>
 
                     <div class="card-body">
@@ -24,7 +24,6 @@
 
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control" name="name" value="" required autofocus autocomplete="off">
-
                                 </div>
                             </div>
 
@@ -33,7 +32,6 @@
 
                                 <div class="col-md-6">
                                     <input id="username" type="text" class="form-control" name="username" value="" required autofocus autocomplete="off">
-
                                 </div>
                             </div>
 
@@ -69,7 +67,6 @@
                                 <div class="col-md-6">
                                     <input type="radio" name="gender" value="Male" checked> Male <br>
                                     <input type="radio" name="gender" value="Female"> Female
-
                                 </div>
                             </div>
 
@@ -92,7 +89,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary bpms">
-                                        <i class="fa fa-spinner fa-spin" id="spinner"></i> Register
+                                        <i class="fa fa-spinner fa-spin" id="spinner"></i> Button
                                     </button>
                                 </div>
                             </div>

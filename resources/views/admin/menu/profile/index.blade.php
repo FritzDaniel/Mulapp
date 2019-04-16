@@ -17,7 +17,7 @@
                         @endif
 
                         <div class="text-right">
-                            <a href="#" class="btn btn-sm btn-info"><i class="fa fa-edit"> Edit</i></a>
+                            <a href="{{ route('admin.profile.edit') }}" class="btn btn-sm btn-info"><i class="fa fa-edit"> Edit</i></a>
                         </div>
 
                         <div class="text-center mt-3">

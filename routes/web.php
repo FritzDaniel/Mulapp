@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+# Template Route
+Route::get('/template/form','TemplateController@form');
+Route::get('/template/card','TemplateController@card');
+
 
 Route::group(['namespace' => 'Landing'], function()
 {
@@ -25,16 +29,19 @@ Route::prefix('admin')->group(function ()
 {
     Route::group(['namespace' => 'Admin','middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
     {
-        # dashboard admin route
+        # dashboard
         Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
 
-        # menu users admin route
-        Route::get('profile', 'AdminController@profile')->name('admin.profile');
+        # menu profile
+        Route::get('profile', 'ProfileController@index')->name('admin.profile');
 
-        # menu users admin route
+        # menu edit profile
+        Route::get('profile/edit', 'ProfileController@edit')->name('admin.profile.edit');
+
+        # menu users
         Route::get('users', 'UsersController@index')->name('admin.users');
 
-        # menu detail user admin route
+        # menu detail user
         Route::get('users/show/{username}', 'UsersController@showDetail')->name('admin.users.show');
 
     });

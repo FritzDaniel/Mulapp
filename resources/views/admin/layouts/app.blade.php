@@ -1,97 +1,39 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @include('admin.layouts.partials.head')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    @include('layouts.css')
-
+    @include('admin.layouts.partials.css')
 </head>
-<body>
-<div id="app">
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="height: auto; min-height: 100%;">
+    <header class="main-header">
+        @include('admin.layouts.partials.header')
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar" style="height: auto;">
+            @include('admin.layouts.partials.sidebar')
+        </section>
+    </aside>
+    <div class="content-wrapper" style="min-height: 916px;">
+        <section class="content-header">
+            @include('admin.layouts.partials.breadcrumb')
+        </section>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-                    @if(\Illuminate\Support\Facades\Auth::check())
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.users') }}"><i class="fa fa-users"></i> {{ __('Users') }}</a>
-                        </li>
+        <section class="content">
+            @yield('content')
+        </section>
+    </div>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-money"></i> {{ __('ManageFunds') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-bar-chart"></i> {{ __('Analytics') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-ticket"></i> {{ __('SupportCenter') }}</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa fa-envelope"></i> {{ __('NotifyUser') }}</a>
-                        </li>
-                    @endif
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a href="{{ route('admin.profile') }}" class="dropdown-item">Profile</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <main class="py-4">
-        @yield('content')
-    </main>
+    <footer class="main-footer">
+        @include('admin.layouts.partials.footer')
+    </footer>
 </div>
 
-@include('layouts.script')
+@include('admin.layouts.partials.script')
 
+<div class="jvectormap-label">
+
+</div>
 </body>
 </html>

@@ -10,18 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-# Template Route
-Route::get('/template/form','TemplateController@form');
-Route::get('/template/card','TemplateController@card');
-
-
 Route::group(['namespace' => 'Landing'], function()
 {
     # landing page route
     Route::get('/', 'LandingController@index')->name('landing');
 
 });
-
 
 Auth::routes();
 
@@ -37,6 +31,11 @@ Route::prefix('admin')->group(function ()
 
         # menu edit profile
         Route::get('profile/edit', 'ProfileController@edit')->name('admin.profile.edit');
+
+        #update profile
+        Route::post('profile/update/data','ProfileController@updateData')->name('admin.profile.update.data');
+        Route::post('profile/update/password','ProfileController@updatePassword')->name('admin.profile.update.password');
+        Route::post('profile/update/displayPicture','ProfileController@updateDisplayPicture')->name('admin.profile.update.displayPicture');
 
         # menu users
         Route::get('users', 'UsersController@index')->name('admin.users');
@@ -54,6 +53,17 @@ Route::prefix('teacher')->group(function ()
         # dashboard teacher route
         Route::get('dashboard', 'TeacherController@dashboard')->name('teacher.dashboard');
 
+        # menu profile
+        Route::get('profile', 'ProfileController@index')->name('teacher.profile');
+
+        # menu edit profile
+        Route::get('profile/edit', 'ProfileController@edit')->name('teacher.profile.edit');
+
+        #update profile
+        Route::post('profile/update/data','ProfileController@updateData')->name('teacher.profile.update.data');
+        Route::post('profile/update/password','ProfileController@updatePassword')->name('teacher.profile.update.password');
+        Route::post('profile/update/displayPicture','ProfileController@updateDisplayPicture')->name('teacher.profile.update.displayPicture');
+
     });
 });
 
@@ -63,6 +73,17 @@ Route::prefix('student')->group(function ()
     {
         # dashboard student route
         Route::get('dashboard', 'StudentController@dashboard')->name('student.dashboard');
+
+        # menu profile
+        Route::get('profile', 'ProfileController@index')->name('student.profile');
+
+        # menu edit profile
+        Route::get('profile/edit', 'ProfileController@edit')->name('student.profile.edit');
+
+        #update profile
+        Route::post('profile/update/data','ProfileController@updateData')->name('student.profile.update.data');
+        Route::post('profile/update/password','ProfileController@updatePassword')->name('student.profile.update.password');
+        Route::post('profile/update/displayPicture','ProfileController@updateDisplayPicture')->name('student.profile.update.displayPicture');
 
     });
 });

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Mul-App | Edit Profile
+    Mul-App | Edit Data User
 @endsection
 
 @section('css')
@@ -11,8 +11,8 @@
 @endsection
 
 @section('headerTitle')
-    Edit Profile
-    <small>Admin Profile</small>
+    Users
+    <small>Admin</small>
 @endsection
 
 @section('content')
@@ -36,20 +36,20 @@
     @endif
 
     <div class="margin-b10">
-        <a href="{{ route('admin.profile') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="{{ route('admin.users') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
     <div class="row">
 
         <div class="col-md-6">
             {{--Edit display picture--}}
-            @include('admin.menu.profile.partials.editDisplayPicture')
-            {{--Edit Password--}}
-            @include('admin.menu.profile.partials.editPassword')
+            @include('admin.menu.users.partials.editDisplayPicture')
+            {{--Edit password--}}
+            @include('admin.menu.users.partials.editPassword')
         </div>
         {{--Edit data profile--}}
         <div class="col-md-6">
-            @include('admin.menu.profile.partials.editData')
+            @include('admin.menu.users.partials.editData')
         </div>
     </div>
 

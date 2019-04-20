@@ -21,7 +21,7 @@ Auth::routes();
 
 Route::prefix('admin')->group(function ()
 {
-    Route::group(['namespace' => 'Admin','middleware' => 'App\Http\Middleware\AdminMiddleware'], function()
+    Route::group(['namespace' => 'Admin'], function()
     {
         # dashboard
         Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
@@ -40,15 +40,30 @@ Route::prefix('admin')->group(function ()
         # menu users
         Route::get('users', 'UsersController@index')->name('admin.users');
 
-        # menu detail user
-        Route::get('users/show/{username}', 'UsersController@showDetail')->name('admin.users.show');
+        # add users
+        Route::get('users/add', 'UsersController@addUser')->name('admin.users.add');
+        Route::post('users/store','UsersController@addAccount')->name('admin.users.store');
 
+        # menu detail user
+        Route::get('users/show/{id}', 'UsersController@showDetail')->name('admin.users.show');
+
+        # edit users
+        Route::get('users/edit/{id}','UsersController@editUser')->name('admin.users.edit');
+
+        # update data users
+        Route::post('users/update/data/{id}','UsersController@updateData')->name('admin.users.update.data');
+        Route::post('users/update/password/{id}','UsersController@updatePassword')->name('admin.users.update.password');
+        Route::post('users/update/displayPicture/{id}','UsersController@updateDisplayPicture')->name('admin.users.update.displayPicture');
+
+        # update Status User
+        Route::post('users/update/status/deactivate/{id}','UsersController@changeStatusDeactivate')->name('admin.users.update.status.deactivate');
+        Route::post('users/update/status/active/{id}','UsersController@changeStatusActive')->name('admin.users.update.status.active');
     });
 });
 
 Route::prefix('teacher')->group(function ()
 {
-    Route::group(['namespace' => 'Teacher','middleware' => 'App\Http\Middleware\TeacherMiddleware'], function()
+    Route::group(['namespace' => 'Teacher'], function()
     {
         # dashboard teacher route
         Route::get('dashboard', 'TeacherController@dashboard')->name('teacher.dashboard');
@@ -69,7 +84,7 @@ Route::prefix('teacher')->group(function ()
 
 Route::prefix('student')->group(function ()
 {
-    Route::group(['namespace' => 'Student','middleware' => 'App\Http\Middleware\StudentMiddleware'], function()
+    Route::group(['namespace' => 'Student'], function()
     {
         # dashboard student route
         Route::get('dashboard', 'StudentController@dashboard')->name('student.dashboard');
@@ -87,4 +102,3 @@ Route::prefix('student')->group(function ()
 
     });
 });
-

@@ -10,7 +10,7 @@
     <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="padding: 18px 15px;">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell-o"></i>
                     <span class="label label-warning">0</span>
                 </a>
@@ -45,8 +45,7 @@
                         <div class="pull-right">
                             <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Sign out') }}
+                               document.getElementById('logout-form').submit();">{{ __('Sign out') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

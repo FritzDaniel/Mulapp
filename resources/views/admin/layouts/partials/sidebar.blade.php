@@ -14,5 +14,10 @@
 
 <ul class="sidebar-menu tree" data-widget="tree">
     <li class="header">NAVIGATION</li>
-    <li @if(Route::currentRouteName() == 'admin.dashboard') class="active" @endif ><a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+    <li @if(Route::currentRouteName() == 'admin.dashboard') class="active" @endif >
+        <a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+    </li>
+    <li @if(strpos(Route::currentRouteName(),'admin.users') !== false) class="active" @endif>
+        <a href="{{ route('admin.users') }}"><i class="fa fa-users"></i> <span>Users</span></a>
+    </li>
 </ul>

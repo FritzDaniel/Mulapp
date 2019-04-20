@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('teacher');
+        $this->middleware('active');
+    }
+
     public function index()
     {
         $user = Auth::user()->id;

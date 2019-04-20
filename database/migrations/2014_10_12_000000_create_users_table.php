@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->date('dob')->nullable();
             $table->string('phone')->nullable();
             $table->string('avatar')->default('default.jpg');
+            $table->string('status')->default('active');
             $table->string('roles');
             $table->rememberToken();
             $table->timestamps();

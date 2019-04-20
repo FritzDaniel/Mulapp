@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+        $this->middleware('active');
+    }
+
     public function index()
     {
         $data = User::where('username','=','admin')->first();
@@ -46,10 +53,11 @@ class ProfileController extends Controller
 
     public function updatePassword(Request $request)
     {
+        $user = Auth::user()->id;
         $this->validate($request, [
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-        $update = User::where('id','=',Auth::user()->id)->first();
+        $update = User::where('id','=',$user)->first();
         $update->password = Hash::make($request['password']);
         $update->update();
 

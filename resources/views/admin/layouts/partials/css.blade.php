@@ -12,6 +12,7 @@
      folder instead of downloading all of them to reduce the load. -->
 <link rel="stylesheet" href="{{ asset('assets/adminLTE/dist/css/skins/_all-skins.min.css') }}">
 
+<link rel="stylesheet" href="{{ asset('css/helper.css') }}">
 @yield('css')
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

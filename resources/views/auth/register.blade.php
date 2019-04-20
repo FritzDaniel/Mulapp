@@ -1,155 +1,115 @@
 @extends('auth.layouts.app')
 
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/submit.css') }}">
+@section('title')
+    Mul-App | Register
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="{{ route('landing') }}"><b>Mul</b>-App</a>
+        </div>
 
-                <div class="card-body">
-                    <form class="fpms" method="POST" action="{{ route('register') }}">
-                        @csrf
+        <div class="register-box-body">
+            <p class="login-box-msg">Register a new membership</p>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus autocomplete="off">
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+            <form class="fpms" action="{{ route('register') }}" method="POST" autocomplete="off">
+                @csrf
+                <div class="form-group{{ $errors->has('name') ? ' has-error' : ' has-feedback' }}">
+                    <input type="text" class="form-control"
+                           placeholder="Full Name" name="name" value="{{ old('name') }}">
+                    @if ($errors->has('name'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('name') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('username') ? ' has-error' : ' has-feedback' }}">
+                    <input type="text" class="form-control"
+                           placeholder="Username" name="username" value="{{ old('username') }}">
+                    @if ($errors->has('username'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('username') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : ' has-feedback' }}">
+                    <input type="email" class="form-control"
+                           placeholder="Email" name="email" value="{{ old('email') }}">
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : ' has-feedback' }}">
+                    <input type="password" class="form-control"
+                           placeholder="Password" name="password">
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : ' has-feedback' }}">
+                    <input type="password" class="form-control"
+                           placeholder="Retype password" name="password_confirmation">
+                    @if ($errors->has('password_confirmation'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password_confirmation') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="checkbox icheck">
+                            <label>
+                                <input type="checkbox" required> I agree to the <a href="#" data-toggle="modal" data-target="#modal-default">terms</a>
+                            </label>
                         </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-xs-4">
+                        <button type="submit" class="bpms btn btn-primary btn-block btn-flat">
+                            {{ __('Register') }}
+                        </button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
 
-                        <div class="form-group row">
-                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+            <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
+        </div>
+        <!-- /.form-box -->
+    </div>
+    <!-- /.register-box -->
 
-                            <div class="col-md-6">
-                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus autocomplete="off">
-
-                                @if ($errors->has('username'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus autocomplete="off">
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required autocomplete>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="off">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
-
-                            <div class="col-md-6">
-                                @if(Illuminate\Support\Facades\Input::old('gender') == 'Female')
-                                    <input type="radio" name="gender" value="Male"> {{ __('Male') }} <br>
-                                    <input type="radio" name="gender" value="Female" checked> {{ __('Female') }}
-                                @else
-                                    <input type="radio" name="gender" value="Male" checked> {{ __('Male') }} <br>
-                                    <input type="radio" name="gender" value="Female"> {{ __('Female') }}
-                                @endif
-
-                                @if ($errors->has('gender'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('gender') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="datepicker" class="col-md-4 col-form-label text-md-right">{{ __('Date of birth') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="datepicker" type="text" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" name="dob" value="{{ old('dob') }}" required autofocus autocomplete="off">
-                                @if ($errors->has('dob'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('dob') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required autofocus>
-
-                                @if ($errors->has('phone'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('phone') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary bpms">
-                                    <i class="fa fa-spinner fa-spin" id="spinner"></i> {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+    {{--modal terms and service--}}
+    <div class="modal fade" id="modal-default" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Terms and Service</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        It has survived not only five centuries, but also the leap into electronic typesetting,
+                        remaining essentially unchanged. It was popularised in the 1960s
+                        with the release of Letraset sheets containing Lorem Ipsum passages,
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                 </div>
             </div>
+            <!-- /.modal-content -->
         </div>
+        <!-- /.modal-dialog -->
     </div>
-</div>
-@endsection
-
-@section('js')
-    <script src="{{ asset('js/submit.js') }}"></script>
-    <script>
-        $( function() {
-            $("#datepicker").datepicker({
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "1950:2019",
-                dateFormat: 'dd-mm-yy'
-            });
-        } );
-    </script>
 @endsection

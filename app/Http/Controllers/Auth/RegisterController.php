@@ -69,9 +69,6 @@ class RegisterController extends Controller
             'username' => ['required','string','max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'gender' => ['required'],
-            'dob' => ['required','date'],
-            'phone' => ['required','numeric'],
         ]);
     }
 
@@ -83,17 +80,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $parseDob = $data['dob'];
-        $dob = Carbon::parse($parseDob)->format('Y/m/d');
-
         return User::create([
             'name' => $data['name'],
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'gender' => $data['gender'],
-            'dob' => $dob,
-            'phone' => $data['phone'],
             'roles' => $data = "student"
         ]);
     }

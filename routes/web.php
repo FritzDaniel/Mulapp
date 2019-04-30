@@ -58,6 +58,21 @@ Route::prefix('admin')->group(function ()
         # update Status User
         Route::post('users/update/status/deactivate/{id}','UsersController@changeStatusDeactivate')->name('admin.users.update.status.deactivate');
         Route::post('users/update/status/active/{id}','UsersController@changeStatusActive')->name('admin.users.update.status.active');
+
+        #blog Admin
+        Route::get('blogs','BlogsController@index')->name('admin.blogs');
+
+        #funding Admin
+        Route::get('funding','FundingController@index')->name('admin.funding');
+
+        #support Admin
+        Route::get('support','SupportController@index')->name('admin.support');
+
+        #statistic Admin
+        Route::get('statistic','StatisticController@index')->name('admin.statistic');
+
+        #notify Admin
+        Route::get('notify','NotifyController@index')->name('admin.notify');
     });
 });
 

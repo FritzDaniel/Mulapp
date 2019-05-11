@@ -33,7 +33,7 @@
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
                         <li>
-                            <a href="{{ route('admin.blogs.index') }}"><i class="fa fa-circle-o"></i> All blogs
+                            <a href="{{ route('admin.blogs.index') }}"><i class="fa fa-circle-o"></i> All article
                                 <span class="label label-info pull-right">{{ $nav->count() }}</span>
                             </a>
                         </li>

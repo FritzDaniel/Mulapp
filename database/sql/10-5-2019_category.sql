@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `blogs_category`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `blogs_category` (
+CREATE TABLE `category` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `category` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `blogs_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `blogs_category`
+-- Dumping data for table `category`
 --
 
-INSERT INTO `blogs_category` (`id`, `category`, `created_at`, `updated_at`) VALUES
+INSERT INTO `category` (`id`, `category`, `created_at`, `updated_at`) VALUES
 (1, 'Development', '2019-05-09 20:31:43', '2019-05-09 20:35:18'),
 (2, 'Business', '2019-05-09 20:34:44', '2019-05-09 20:36:02'),
 (3, 'IT & Software', '2019-05-09 20:36:14', '2019-05-09 20:36:14'),
@@ -57,9 +57,9 @@ INSERT INTO `blogs_category` (`id`, `category`, `created_at`, `updated_at`) VALU
 --
 
 --
--- Indexes for table `blogs_category`
+-- Indexes for table `category`
 --
-ALTER TABLE `blogs_category`
+ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -67,9 +67,9 @@ ALTER TABLE `blogs_category`
 --
 
 --
--- AUTO_INCREMENT for table `blogs_category`
+-- AUTO_INCREMENT for table `category`
 --
-ALTER TABLE `blogs_category`
+ALTER TABLE `category`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 

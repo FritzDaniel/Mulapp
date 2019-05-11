@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    MulApp | Blog Category
+    MulApp | Category
 @endsection
 
 @section('css')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('headerTitle')
-    Blog Category
+    Category
     <small>Admin</small>
 @endsection
 
@@ -26,7 +26,7 @@
     @endif
 
     <div class="margin-b10">
-        <a href="{{ route('admin.blogs.category.index') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="{{ route('admin.category') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
     <div class="box">
@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="box-body">
-            <form id="addData" class="fpms" method="POST" action="{{ route('admin.blogs.category.store') }}" autocomplete="off">
+            <form id="addData" class="fpms" method="POST" action="{{ route('admin.category.store') }}" autocomplete="off">
                 @csrf
 
                 <div class="form-group{{ $errors->has('category') ? ' has-error' : ' has-feedback' }}">

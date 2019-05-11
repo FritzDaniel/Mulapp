@@ -18,23 +18,13 @@
         <a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
     </li>
     <li class="header">Community</li>
-    <li @if(strpos(Route::currentRouteName(),'admin.blogs.') !== false) class="treeview active" @else class="treeview" @endif>
-        <a href="#">
-            <i class="fa fa-files-o"></i> <span>Blogs</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul @if(strpos(Route::currentRouteName(),'admin.blogs.') !== false) class="treeview-menu" @else class="treeview-menu" style="display: none; @endif">
-            <li @if(strpos(Route::currentRouteName(),'admin.blogs.index') !== false) class="active" @endif>
-                <a href="{{ route('admin.blogs.index') }}"><i class="fa fa-circle-o"></i> Blog</a>
-            </li>
-            <li @if(strpos(Route::currentRouteName(),'admin.blogs.category.') !== false) class="active" @endif>
-                <a href="{{ route('admin.blogs.category.index') }}"><i class="fa fa-circle-o"></i> Blog category</a>
-            </li>
-        </ul>
+    <li @if(strpos(Route::currentRouteName(),'admin.blogs.index') !== false) class="active" @endif>
+        <a href="{{ route('admin.blogs.index') }}"><i class="fa fa-files-o"></i> <span>Blogs</span></a>
     </li>
     <li class="header">Forms control</li>
+    <li @if(strpos(Route::currentRouteName(),'admin.category') !== false) class="active" @endif>
+        <a href="{{ route('admin.category') }}"><i class="fa fa-tag"></i> <span>Category</span></a>
+    </li>
     <li @if(strpos(Route::currentRouteName(),'admin.tags') !== false) class="active" @endif>
         <a href="{{ route('admin.tags') }}"><i class="fa fa-tags"></i> <span>Tags</span></a>
     </li>

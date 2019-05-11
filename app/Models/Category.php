@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models\Blog;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $table = 'blogs_category';
+    protected $table = 'category';
     protected $primaryKey ='id';
     protected $fillable = ['category'];
     public $timestamps = true;

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Mulapp | Show Category
+    Mulapp | Category
 @endsection
 
 @section('css')
@@ -9,14 +9,14 @@
 @endsection
 
 @section('headerTitle')
-    Blog Category
+    Category
     <small>Admin</small>
 @endsection
 
 @section('content')
 
     <div class="margin-b10">
-        <a href="{{ route('admin.blogs.category.index') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="{{ route('admin.category') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
     <div class="box">

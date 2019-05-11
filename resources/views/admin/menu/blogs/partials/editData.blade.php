@@ -40,10 +40,10 @@
                 @endif
             </div>
 
-            <div class="form-group{{ $errors->has('tags') ? ' has-error' : ' has-feedback' }}">
+            <div class="form-group{{ $errors->has('tag') ? ' has-error' : ' has-feedback' }}">
                 <label>Tags *</label>
                 <select class="form-control select2 select2-hidden-accessible"
-                        name="tags[]" multiple="multiple" data-placeholder="Tags" style="width: 100%;"
+                        name="tag[]" multiple="multiple" data-placeholder="Tag" style="width: 100%;"
                         tabindex="-1" aria-hidden="true" id="tagsInput">
                     <option value="">Select Tag</option>
                     @foreach($tags as $tag)
@@ -60,9 +60,9 @@
                         </option>
                     @endforeach
                 </select>
-                @if ($errors->has('tags'))
+                @if ($errors->has('tag'))
                     <span class="help-block">
-                            <strong>{{ $errors->first('tags') }}</strong>
+                            <strong>{{ $errors->first('tag') }}</strong>
                         </span>
                 @endif
                 <small>Add new tags <a href="#" data-toggle="modal" data-target="#tagsModal">here!</a></small>

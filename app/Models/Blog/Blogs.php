@@ -2,6 +2,7 @@
 
 namespace App\Models\Blog;
 
+use App\Models\Category;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 

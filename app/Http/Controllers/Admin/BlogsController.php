@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Blog\Blogs;
 use App\Models\Blog\BlogsTags;
-use App\Models\Blog\Category;
+use App\Models\Category;
 use App\Models\Tags;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -73,7 +73,7 @@ class BlogsController extends Controller
         $this->validate($request, [
             'title' => ['required'],
             'category' => ['required'],
-            'tags' => ['required'],
+            'tag' => ['required'],
             'body' => ['required'],
             'thumbnail' => ['Image', 'mimes:jpeg,jpg,png'],
         ]);
@@ -96,7 +96,7 @@ class BlogsController extends Controller
         $store->allow_comment = $request['allow_comment'];
         $store->save();
 
-        foreach ($request['tags'] as $tags)
+        foreach ($request['tag'] as $tags)
         {
             $storeTags = [
                 'blogs_id' => $store->id,
@@ -105,7 +105,7 @@ class BlogsController extends Controller
             BlogsTags::create($storeTags);
         }
 
-        return redirect()->route('admin.blogs.index')->with('status','Blogs has been successfully created!');
+        return redirect()->route('admin.blogs.index')->with('status','Article has been successfully created!');
     }
 
     public function updateBlogsData(Request $request ,$id)
@@ -113,7 +113,7 @@ class BlogsController extends Controller
         $this->validate($request, [
             'title' => ['required'],
             'category' => ['required'],
-            'tags' => ['required'],
+            'tag' => ['required'],
         ]);
 
         $update = Blogs::where('id','=',$id)->first();
@@ -124,7 +124,7 @@ class BlogsController extends Controller
         $update->allow_comment = $request['allow_comment'];
         $update->update();
 
-        if ($request['tags'])
+        if ($request['tag'])
         {
             $delete = BlogsTags::where('blogs_id','=',$id)->get();
             foreach ($delete as $del)
@@ -134,7 +134,7 @@ class BlogsController extends Controller
             }
         }
 
-        foreach ($request['tags'] as $tags)
+        foreach ($request['tag'] as $tags)
         {
             $storeTags = [
                 'blogs_id' => $update->id,
@@ -143,7 +143,7 @@ class BlogsController extends Controller
             BlogsTags::create($storeTags);
         }
 
-        return redirect()->back()->with('status','Blogs has been successfully updated!');
+        return redirect()->back()->with('status','Article has been successfully updated!');
     }
 
     public function updateBlogsThumbnail(Request $request,$id)
@@ -204,74 +204,7 @@ class BlogsController extends Controller
             $deleteData->delete();
         }
         $data->delete();
-    }
 
-    // Blogs Category
-
-    public function category_index(Request $request)
-    {
-        $nav = Category::all();
-
-        $keyword = $request->get('search');
-
-        if (!empty($keyword)){
-            $data = Category::where('category', 'LIKE', "%$keyword%")
-                ->orderBy('created_at','ASC')
-                ->get();
-        } else {
-            $data = Category::orderBy('id','ASC')->paginate(10);
-        }
-        return view('admin.menu.blogs.category.index',compact('data','keyword','nav'));
-    }
-
-    public function addCategory()
-    {
-        return view('admin.menu.blogs.category.add');
-    }
-
-    public function showCategory($id)
-    {
-        $data = Category::find($id);
-        return view('admin.menu.blogs.category.show',compact('data'));
-    }
-
-    public function storeCategory(Request $request)
-    {
-        $this->validate($request,[
-            'category' => 'required',
-        ]);
-
-        $store = new Category();
-        $store->category = $request['category'];
-        $store->save();
-
-        return redirect()->route('admin.blogs.category.index')->with('status','New category has been added!');
-    }
-
-    public function editCategory($id)
-    {
-        $data = Category::where('id',$id)->first();
-        return view('admin.menu.blogs.category.edit',compact('data'));
-    }
-
-    public function updateCategory(Request $request,$id)
-    {
-        $this->validate($request,[
-            'category' => 'required',
-        ]);
-
-        $update = Category::where('id',$id)->first();
-        $update->category = $request['category'];
-        $update->update();
-
-        return redirect()->route('admin.blogs.category.index')->with('status','Category has been updated!');
-    }
-
-    public function deleteCategory($id)
-    {
-        $data = Category::where('id',$id)->first();
-        $data->delete();
-
-        return redirect()->route('admin.blogs.category.index')->with('status','Category has been deleted!');
+        return redirect()->back()->with('status','Article has been successfully deleted!');
     }
 }

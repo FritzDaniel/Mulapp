@@ -54,7 +54,7 @@
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
                         <li>
-                            <a href="#"><i class="fa fa-circle-o"></i> All tags
+                            <a href="{{ route('admin.tags') }}"><i class="fa fa-circle-o"></i> All tags
                                 <span class="label label-info pull-right">{{ isset($nav) ? $nav->count() : '0' }}</span>
                             </a>
                         </li>

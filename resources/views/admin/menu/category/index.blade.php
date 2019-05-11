@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Mul-App | Blog Category
+    Mul-App | Category
 @endsection
 
 @section('css')
@@ -9,7 +9,7 @@
 @endsection
 
 @section('headerTitle')
-    Blog Category
+    Category
     <small>Admin</small>
 @endsection
 
@@ -25,8 +25,8 @@
 
     <div class="row">
         <div class="col-md-3">
-            <a href="{{ route('admin.blogs.category.add') }}" class="btn btn-primary btn-block margin-bottom">
-                <i class="fa fa-plus-circle"></i> Add category blog
+            <a href="{{ route('admin.category.add') }}" class="btn btn-primary btn-block margin-bottom">
+                <i class="fa fa-plus-circle"></i> Add category
             </a>
 
             <div class="box box-solid">
@@ -42,7 +42,7 @@
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
                         <li>
-                            <a href="{{ route('admin.blogs.category.index') }}"><i class="fa fa-circle-o"></i> All category
+                            <a href="{{ route('admin.category') }}"><i class="fa fa-circle-o"></i> All category
                                 <span class="label label-info pull-right">{{ isset($nav) ? $nav->count() : '0' }}</span>
                             </a>
                         </li>
@@ -59,7 +59,7 @@
                     <h3 class="box-title">Category list</h3>
 
                     <div class="box-tools">
-                        <form action="{{ route('admin.blogs.category.index') }}" class="input-group input-group-sm" style="width: 150px;" method="GET" autocomplete="off">
+                        <form action="{{ route('admin.category') }}" class="input-group input-group-sm" style="width: 150px;" method="GET" autocomplete="off">
                             <input type="text" name="search" class="form-control pull-right" placeholder="Search">
 
                             <div class="input-group-btn">
@@ -95,9 +95,9 @@
                                 <td>{{ isset($dt->category) ? $dt->category : 'null' }}</td>
                                 <td>{{ isset($dt->created_at) ? \Carbon\Carbon::parse($dt->created_at)->format('d-M-Y') : 'null' }}</td>
                                 <td>
-                                    <a href="{{ route('admin.blogs.category.show',$dt->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                    <a href="{{ route('admin.blogs.category.edit',$dt->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                    <a href="{{ route('admin.blogs.category.delete',$dt->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-times"></i></a>
+                                    <a href="{{ route('admin.category.show',$dt->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('admin.category.edit',$dt->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('admin.category.delete',$dt->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
                             @endforeach

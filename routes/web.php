@@ -19,6 +19,30 @@ Route::group(['namespace' => 'Landing'], function()
 
 Auth::routes();
 
+Route::group(['namespace' => 'Globals'], function()
+{
+    Route::prefix('admin')->group(function (){
+        Route::group(['middleware' => 'admin'], function() {
+
+            # Category admin menu
+            Route::get('category','CategoryController@index')->name('admin.category');
+            Route::get('category/add','CategoryController@add')->name('admin.category.add');
+            Route::post('category/store','CategoryController@store')->name('admin.category.store');
+            Route::get('category/edit/{id}','CategoryController@edit')->name('admin.category.edit');
+            Route::post('category/update/{id}','CategoryController@update')->name('admin.category.update');
+            Route::get('category/delete/{id}','CategoryController@delete')->name('admin.category.delete');
+            Route::get('category/show/{id}','CategoryController@show')->name('admin.category.show');
+
+            # Tags admin menu
+            Route::get('tags','TagsController@index')->name('admin.tags');
+            Route::get('tags/delete/{id}','TagsController@delete')->name('admin.tags.delete');
+        });
+    });
+
+    # Tags store Global
+    Route::post('tags/store','TagsController@store')->name('tags.store');
+});
+
 Route::prefix('admin')->group(function ()
 {
     Route::group(['namespace' => 'Admin'], function()
@@ -71,15 +95,6 @@ Route::prefix('admin')->group(function ()
         Route::post('blogs/update/body/{id}','BlogsController@updateBlogsBody')->name('admin.blogs.update.body');
         Route::get('blogs/delete/{id}','BlogsController@deleteBlogs')->name('admin.blogs.delete');
 
-        # Blog category admin
-        Route::get('blogs/category','BlogsController@category_index')->name('admin.blogs.category.index');
-        Route::get('blogs/category/add','BlogsController@addCategory')->name('admin.blogs.category.add');
-        Route::post('blogs/category/store','BlogsController@storeCategory')->name('admin.blogs.category.store');
-        Route::get('blogs/category/edit/{id}','BlogsController@editCategory')->name('admin.blogs.category.edit');
-        Route::post('blogs/category/update/{id}','BlogsController@updateCategory')->name('admin.blogs.category.update');
-        Route::get('blogs/category/delete/{id}','BlogsController@deleteCategory')->name('admin.blogs.category.delete');
-        Route::get('blogs/category/show/{id}','BlogsController@showCategory')->name('admin.blogs.category.show');
-
         # Funding admin
         Route::get('funding','FundingController@index')->name('admin.funding');
 
@@ -91,11 +106,6 @@ Route::prefix('admin')->group(function ()
 
         # Notify admin
         Route::get('notify','NotifyController@index')->name('admin.notify');
-
-        # Tags admin
-        Route::get('tags','TagsController@index')->name('admin.tags');
-        Route::post('tags/store','TagsController@storeTags')->name('admin.tags.store');
-        Route::get('tags/delete/{id}','TagsController@deleteTags')->name('admin.tags.delete');
     });
 });
 

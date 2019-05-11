@@ -71,8 +71,6 @@
         <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
-    {{--@include('admin.menu.blogs.partials.modal-addTags')--}}
-
     <div class="box">
         <div class="box-header with-border">
             <h3 class="box-title">Add article </h3>
@@ -119,16 +117,16 @@
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('tags') ? ' has-error' : ' has-feedback' }}">
+                <div class="form-group{{ $errors->has('tag') ? ' has-error' : ' has-feedback' }}">
                     <label>Tags *</label>
                     <select class="form-control select2 select2-hidden-accessible"
-                            name="tags[]" multiple="multiple" data-placeholder="Tags" style="width: 100%;"
+                            name="tag[]" multiple="multiple" data-placeholder="Tag" style="width: 100%;"
                             tabindex="-1" aria-hidden="true" id="tagsInput">
                             <option value="">Select Tag</option>
                         @foreach($tags as $tag)
                             <option value="{{ $tag->id }}"
-                                @if(old('tags'))
-                                    @foreach(old('tags') as $oldTags)
+                                @if(old('tag'))
+                                    @foreach(old('tag') as $oldTags)
                                         @if($tag->tags == $oldTags)
                                             selected
                                         @elseif($tag->id == $oldTags)
@@ -143,12 +141,12 @@
                         @endforeach
                     </select>
 
-                    @if ($errors->has('tags'))
+                    @if ($errors->has('tag'))
                         <span class="help-block">
-                            <strong>{{ $errors->first('tags') }}</strong>
+                            <strong>{{ $errors->first('tag') }}</strong>
                         </span>
                     @endif
-                    {{--<small>Add new tags <a href="#" data-toggle="modal" data-target="#tagsModal">here!</a></small>--}}
+                    <small>Add new tags <a href="#" data-toggle="modal" data-target="#tagsModal">here!</a></small>
                 </div>
 
                 <div class="form-groupt text-left">
@@ -196,6 +194,8 @@
             </button>
         </div>
     </div>
+
+    @include('admin.menu.blogs.partials.modal-addTags')
 
 @endsection
 

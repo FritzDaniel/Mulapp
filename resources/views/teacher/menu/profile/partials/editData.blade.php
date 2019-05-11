@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="box-body">
-        <form id="editData" class="fpms" method="POST" action="{{ route('student.profile.update.data') }}" autocomplete="off">
+        <form id="editData" class="fpms" method="POST" action="{{ route('teacher.profile.update.data') }}" autocomplete="off">
             @csrf
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : ' has-feedback' }}">
@@ -26,7 +26,7 @@
             <div class="form-group{{ $errors->has('username') ? ' has-error' : ' has-feedback' }}">
                 <label>Username</label>
                 <input type="text" class="form-control"
-                       placeholder="Username" name="username" value="{{ $data->username }}">
+                       placeholder="Username" name="username" value="{{ $data->username }}" disabled>
                 @if ($errors->has('username'))
                     <span class="help-block">
                         <strong>{{ $errors->first('username') }}</strong>

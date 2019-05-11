@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('avatar')->default('default.jpg');
             $table->string('status')->default('active');
+            $table->bigInteger('point')->default('0');
             $table->string('roles');
+            $table->timestamp('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

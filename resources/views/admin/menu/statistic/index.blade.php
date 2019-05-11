@@ -15,21 +15,23 @@
 
 @section('content')
 
-    <div class="box">
-        <div class="box-header with-border">
-            <h3 class="box-title">Statistic Mul-App</h3>
+    <div class="row">
 
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
-                    <i class="fa fa-minus"></i></button>
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>{{ $userData->count() - 1 }}</h3>
+
+                    <p>User Registrations</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="{{ route('admin.users') }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="box-body">
-            Start creating your amazing application!
-        </div>
-        <div class="box-footer">
-            Footer
-        </div>
+
     </div>
 
 @endsection

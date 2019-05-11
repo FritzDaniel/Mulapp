@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -16,6 +17,7 @@ class StatisticController extends Controller
 
     public function index()
     {
-        return view('admin.menu.statistic.index');
+        $userData = User::all();
+        return view('admin.menu.statistic.index',compact('userData'));
     }
 }

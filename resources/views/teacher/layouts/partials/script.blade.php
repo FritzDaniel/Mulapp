@@ -7,4 +7,10 @@
 <script src="{{ asset('assets/adminLTE/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('assets/adminLTE/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
 <script src="{{ asset('assets/adminLTE/bower_components/chart.js/Chart.js') }}"></script>
+<script src="{{ asset('js/submit.js') }}"></script>
+<script src="{{ asset('assets/adminLTE/plugins/pace/pace.min.js') }}"></script>
+
+<script>
+    $(document).ajaxStart(function() { Pace.restart(); });
+</script>
 @yield('js')

@@ -5,7 +5,7 @@
 
     @include('admin.layouts.partials.css')
 </head>
-<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
+<body class="hold-transition skin-blue sidebar-mini" style="height: auto; min-height: 100%;">
 <div class="wrapper" style="height: auto; min-height: 100%;">
     <header class="main-header">
         @include('admin.layouts.partials.header')

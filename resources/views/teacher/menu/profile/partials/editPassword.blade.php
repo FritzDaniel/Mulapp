@@ -9,8 +9,25 @@
         </div>
     </div>
     <div class="box-body">
-        <form class="fpms" id="editPassword" action="{{ route('student.profile.update.password') }}" method="POST" autocomplete="off">
+        <form class="fpms" id="editPassword" action="{{ route('teacher.profile.update.password') }}" method="POST" autocomplete="off">
             @csrf
+            <div class="form-group{{ $errors->has('old_password') ? ' has-error' : ' has-feedback' }}">
+                <label>Old Password</label>
+                <input id="oldPasswordInput" type="password" class="form-control"
+                       placeholder="Old password" name="old_password" autocomplete="new-password">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkOldPassword">
+                        Show Old Password
+                    </label>
+                </div>
+                @if ($errors->has('old_password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('old_password') }}</strong>
+                    </span>
+                @endif
+            </div>
+
             <div class="form-group{{ $errors->has('password') ? ' has-error' : ' has-feedback' }}">
                 <label>Password</label>
                 <input id="passwordInput" type="password" class="form-control"
@@ -61,6 +78,12 @@
     </script>
     <script>
         $(document).ready(function(){
+            $('#checkOldPassword').click(function(){
+                $(this).is(':checked') ?
+                    $('#oldPasswordInput').attr('type', 'text') :
+                    $('#oldPasswordInput').attr('type', 'password');
+            });
+
             $('#checkPassword').click(function(){
                 $(this).is(':checked') ?
                     $('#passwordInput').attr('type', 'text') :

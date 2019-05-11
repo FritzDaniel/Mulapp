@@ -26,7 +26,7 @@
             <div class="form-group{{ $errors->has('username') ? ' has-error' : ' has-feedback' }}">
                 <label>Username</label>
                 <input type="text" class="form-control"
-                       placeholder="Username" name="username" value="{{ $data->username }}">
+                       placeholder="Username" name="username" value="{{ $data->username }}" disabled>
                 @if ($errors->has('username'))
                     <span class="help-block">
                         <strong>{{ $errors->first('username') }}</strong>

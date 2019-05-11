@@ -1,6 +1,6 @@
 @if($data->status !== 'active')
     <a href="{{ route('admin.users.update.status.active',$data->id) }}" class="btn btn-app"
-       onclick="event.preventDefault();
+        onclick="event.preventDefault();
         document.getElementById('changeStatusActive').submit();">
         <i class="fa fa-plus-circle"></i> Activate
     </a>

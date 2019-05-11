@@ -5,7 +5,8 @@
         <i class="fa fa-plus-circle"></i>
     </a>
 
-    <form id="changeStatusActive" action="{{ route('admin.users.update.status.active',$dt->id) }}" method="POST" style="display: none">
+    <form id="changeStatusActive" action="{{ route('admin.users.update.status.active',$dt->id) }}"
+        method="POST" style="display: none">
         @csrf
     </form>
 @else
@@ -15,7 +16,8 @@
         <i class="fa fa-times"></i>
     </a>
 
-    <form id="changeStatusDeactivate" action="{{ route('admin.users.update.status.deactivate',$dt->id) }}" method="POST" style="display: none">
+    <form id="changeStatusDeactivate" action="{{ route('admin.users.update.status.deactivate',$dt->id) }}"
+        method="POST" style="display: none">
         @csrf
     </form>
 @endif

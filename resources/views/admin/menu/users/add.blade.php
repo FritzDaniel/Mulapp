@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Template
+    Mulapp | Add User
 @endsection
 
 @section('css')

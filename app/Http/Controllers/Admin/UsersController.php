@@ -18,10 +18,24 @@ class UsersController extends Controller
         $this->middleware('active');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = User::all();
-        return view('admin.menu.users.index',compact('data'));
+        $nav = User::all();
+
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)){
+            $data = User::where('name', 'LIKE', "%$keyword%")
+                ->orWhere('username', 'LIKE', "%$keyword%")
+                ->orWhere('status', 'LIKE', "%$keyword%")
+                ->orWhere('email', 'LIKE', "%$keyword%")
+                ->orWhere('phone', 'LIKE', "%$keyword%")
+                ->orderBy('created_at','DESC')
+                ->get();
+        } else {
+            $data = User::orderBy('created_at','DESC')->paginate(10);
+        }
+        return view('admin.menu.users.index',compact('data','keyword','nav'));
     }
 
     public function addUser()
@@ -133,8 +147,8 @@ class UsersController extends Controller
 
     public function changeStatusDeactivate($id)
     {
-        $status = User::where('id','=',$id)->first();
-        $status->status = "deactivate";
+        $status = User::find($id);
+        $status->status = "inactive";
         $status->update();
 
         return redirect()->back()->with('status','Status successfully updated!');

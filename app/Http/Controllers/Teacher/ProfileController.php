@@ -37,14 +37,11 @@ class ProfileController extends Controller
         $user = Auth::user()->id;
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'username' => ['required','string','max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['numeric'],
-
         ]);
         $update = User::where('id','=',$user)->first();
         $update->name = $request['name'];
-        $update->username = $request['username'];
         $update->email = $request['email'];
         $update->gender = $request['gender'];
         $update->dob = $request['dob'];
@@ -58,13 +55,22 @@ class ProfileController extends Controller
     {
         $user = Auth::user()->id;
         $this->validate($request, [
+            'old_password' => 'required',
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-        $update = User::where('id','=',$user)->first();
-        $update->password = Hash::make($request['password']);
-        $update->update();
 
-        return redirect()->back()->with('status','Data successfully updated!');
+        $user_password = User::find(auth()->user()->id);
+
+        if(!Hash::check($request['old_password'], $user_password->password)){
+            return back()
+                ->with('error','The specified password does not match!');
+        }else{
+            $update = User::where('id','=',$user)->first();
+            $update->password = Hash::make($request['password']);
+            $update->update();
+        }
+
+        return redirect()->back()->with('status','Password successfully updated!');
     }
 
     public function updateDisplayPicture(Request $request)
@@ -95,6 +101,6 @@ class ProfileController extends Controller
             $update->update();
         }
 
-        return redirect()->back()->with('status','Data successfully updated!');
+        return redirect()->back()->with('status','Display Picture successfully updated!');
     }
 }

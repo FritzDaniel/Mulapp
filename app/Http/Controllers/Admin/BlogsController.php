@@ -194,7 +194,7 @@ class BlogsController extends Controller
         $data = Blogs::find($id);
         if ($data->thumbnail !== null)
         {
-            $images_path = public_path().'/assets/uploads/thumbnail/'.$update->thumbnail;
+            $images_path = public_path().'/assets/uploads/thumbnail/'.$data->thumbnail;
             unlink($images_path);
         }
         $dataTags = BlogsTags::where('blogs_id','=',$id)->get();

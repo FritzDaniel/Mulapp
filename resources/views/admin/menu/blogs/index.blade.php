@@ -91,7 +91,7 @@
                                     <td>
                                         <a href="{{ route('admin.blogs.detail',$dt->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('admin.blogs.edit',$dt->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                        <a href="{{ route('admin.blogs.delete',$dt->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('admin.blogs.delete',$dt->id) }}" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -118,5 +118,17 @@
 @endsection
 
 @section('js')
+
+    <script>
+        $(document).ready(function(){
+            $("a.delete").click(function(e){
+                if(!confirm('Are you sure want to delete this article?')){
+                    e.preventDefault();
+                    return false;
+                }
+                return true;
+            });
+        });
+    </script>
 
 @endsection

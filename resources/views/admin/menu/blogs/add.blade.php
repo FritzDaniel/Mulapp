@@ -71,7 +71,7 @@
         <a href="{{ route('admin.blogs.index') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
-    @include('admin.menu.blogs.partials.modal-addTags')
+    {{--@include('admin.menu.blogs.partials.modal-addTags')--}}
 
     <div class="box">
         <div class="box-header with-border">
@@ -105,9 +105,13 @@
                             style="width: 100%;" tabindex="-1" aria-hidden="true" id="categoryInput">
                         <option value="">Select category</option>
                         @foreach($cat as $cats)
-                            <option value="{{ $cats->id }}" @if ( old('category_id') == $cats->id) selected @endif>{{ $cats->category }}</option>
+                            <option value="{{ $cats->id }}"
+                                {{ old('category') == $cats->id ? 'selected' : '' }}>
+                                {{ $cats->category }}
+                            </option>
                         @endforeach
                     </select>
+
                     @if ($errors->has('category'))
                         <span class="help-block">
                             <strong>{{ $errors->first('category') }}</strong>
@@ -122,21 +126,34 @@
                             tabindex="-1" aria-hidden="true" id="tagsInput">
                             <option value="">Select Tag</option>
                         @foreach($tags as $tag)
-                            <option value="{{ $tag->id }}">{{ $tag->tags }}</option>
+                            <option value="{{ $tag->id }}"
+                                @if(old('tags'))
+                                    @foreach(old('tags') as $oldTags)
+                                        @if($tag->tags == $oldTags)
+                                            selected
+                                        @elseif($tag->id == $oldTags)
+                                            selected
+                                        @else
+
+                                        @endif
+                                    @endforeach
+                                @endif
+                            >{{ $tag->tags }}
+                            </option>
                         @endforeach
                     </select>
+
                     @if ($errors->has('tags'))
                         <span class="help-block">
                             <strong>{{ $errors->first('tags') }}</strong>
                         </span>
                     @endif
-                    <small>Add new tags <a href="#" data-toggle="modal" data-target="#tagsModal">here!</a></small>
+                    {{--<small>Add new tags <a href="#" data-toggle="modal" data-target="#tagsModal">here!</a></small>--}}
                 </div>
 
                 <div class="form-groupt text-left">
                     <label for="exampleInputFile">Thumbnail</label>
                     <input type="file" class="form-control" name="thumbnail">
-
                     <p class="help-block">Upload your thumbnail</p>
                 </div>
 
@@ -158,14 +175,16 @@
                     <label>Allow Comments *</label>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="allow_comment" id="allow_comment" value="1" checked>
-                            Allowed
+                            <input type="radio" name="allow_comment" id="allow_comment" value="1" checked
+                                {{ old('allow_comment') == '1' ? 'checked' : '' }}>
+                                Allowed
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="allow_comment" id="allow_comment" value="0">
-                            Disabled
+                            <input type="radio" name="allow_comment" id="allow_comment" value="0"
+                                {{ old('allow_comment') == '0' ? 'checked' : '' }}>
+                                Disabled
                         </label>
                     </div>
                 </div>
@@ -193,6 +212,12 @@
     </script>
 
     <script>
+        $('#submitTags').on('click',function () {
+            $('#tagsForm').submit();
+        });
+    </script>
+
+    <script>
         $(document).ready(function() {
             $('#categoryInput').select2();
         });
@@ -208,13 +233,6 @@
         $(function () {
             $('#body').wysihtml5()
         })
-    </script>
-
-    <script>
-        $('#submitTags').on('click',function () {
-            // alert('hello!');
-            $('#tagsForm').submit();
-        });
     </script>
 
 @endsection

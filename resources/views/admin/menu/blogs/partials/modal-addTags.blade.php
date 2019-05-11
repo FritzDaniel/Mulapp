@@ -11,13 +11,13 @@
                 <form id="tagsForm" class="fpms" method="POST" action="{{ route('admin.tags.store') }}" autocomplete="off">
                     @csrf
 
-                    <div class="form-group{{ $errors->has('tags') ? ' has-error' : ' has-feedback' }}">
+                    <div class="form-group{{ $errors->has('tag') ? ' has-error' : ' has-feedback' }}">
                         <label>Tags</label>
                         <input type="text" class="form-control"
-                               placeholder="Tags title" name="tags" value="{{ old('tags') }}">
-                        @if ($errors->has('tags'))
+                               placeholder="Tags title" name="tag" value="{{ old('tags') }}">
+                        @if ($errors->has('tag'))
                             <span class="help-block">
-                        <strong>{{ $errors->first('tags') }}</strong>
+                        <strong>{{ $errors->first('tag') }}</strong>
                     </span>
                         @endif
                     </div>

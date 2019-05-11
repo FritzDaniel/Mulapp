@@ -45,12 +45,12 @@ class TagsController extends Controller
         ];
 
         $this->validate($request,[
-            'tags' => 'required|unique:tags',
+            'tag' => 'required|unique:tags',
         ], $messages);
 
         $store = new Tags();
         $store->user_id = Auth::user()->id;
-        $store->tags = strtolower($request['tags']);
+        $store->tags = strtolower($request['tag']);
         $store->save();
 
         return redirect()->back()->with('status','New tags has been added!');

@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7fff7cc-89fa-470c-b3a5-067e677ed2cb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/uploads/thumbnail/Admin_1557560805.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/menu/blogs/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/menu/blogs/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/menu/blogs/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/menu/blogs/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/menu/blogs/partials/modal-addTags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/menu/blogs/partials/modal-addTags.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/menu/tags/partials/modal-addTags.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/menu/tags/partials/modal-addTags.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/uploads/.gitignore" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,11 +62,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/menu/blogs/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
               <caret line="93" column="127" selection-start-line="93" selection-start-column="127" selection-end-line="93" selection-end-column="127" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/assets/uploads/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -92,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
         <option value="$PROJECT_DIR$/app/Listeners/UpdateLastLogin.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/menu/users/partials/navigationForms.blade.php" />
@@ -143,6 +149,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/menu/blogs/add.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/menu/blogs/index.blade.php" />
+        <option value="$PROJECT_DIR$/public/assets/uploads/.gitignore" />
       </list>
     </option>
   </component>
@@ -336,84 +343,6 @@
             <path>
               <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="blogs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="blogs" type="462c0819:PsiDirectoryNode" />
-              <item name="category" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="blogs" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="tags" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="tags" type="462c0819:PsiDirectoryNode" />
-              <item name="partials" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="menu" type="462c0819:PsiDirectoryNode" />
-              <item name="users" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Mul-app" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Mul-app" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -434,19 +363,19 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\admin\menu\users\partials" />
-      <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\teacher" />
-      <recent name="C:\xampp\htdocs\Laravel-Project\Mul-app\app\Http\Controllers\Admin" />
-      <recent name="C:\xampp\htdocs\Laravel-Project\Mul-app\resources\views\admin" />
-      <recent name="C:\xampp\htdocs\Laravel-Project\Mul-app\resources\views\landing" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\admin\menu\users" />
       <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\admin\menu\users\partials" />
       <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\student\menu" />
       <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\teacher\menu\profile" />
       <recent name="C:\xampp\htdocs\Laravel-Project\Mul-app\resources\views\template" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\public\assets\uploads" />
+      <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\admin\menu\users\partials" />
+      <recent name="C:\xampp2\htdocs\Laravel-Project\Mul-app\resources\views\teacher" />
+      <recent name="C:\xampp\htdocs\Laravel-Project\Mul-app\app\Http\Controllers\Admin" />
+      <recent name="C:\xampp\htdocs\Laravel-Project\Mul-app\resources\views\admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -502,12 +431,12 @@
       <workItem from="1557400016562" duration="2623000" />
       <workItem from="1557458128274" duration="13194000" />
       <workItem from="1557480790935" duration="8270000" />
-      <workItem from="1557540024600" duration="19370000" />
+      <workItem from="1557540024600" duration="19547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148660000" />
+    <option name="totallyTimeSpent" value="148837000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -582,20 +511,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_08_050626_create_blogs_category_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/menu/users/partials/navigationForms.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="2" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/teacher/menu/profile/partials/editData.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -928,6 +843,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="93" column="127" selection-start-line="93" selection-start-column="127" selection-end-line="93" selection-end-column="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/uploads/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
         </state>
       </provider>
     </entry>

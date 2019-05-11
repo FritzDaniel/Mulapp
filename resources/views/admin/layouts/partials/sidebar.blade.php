@@ -32,8 +32,8 @@
     <li @if(strpos(Route::currentRouteName(),'admin.users') !== false) class="active" @endif>
         <a href="{{ route('admin.users') }}"><i class="fa fa-users"></i> <span>Users</span></a>
     </li>
-    <li @if(strpos(Route::currentRouteName(),'admin.funding') !== false) class="active" @endif>
-        <a href="{{ route('admin.funding') }}"><i class="fa fa-money"></i> <span>Manage funding</span></a>
+    <li @if(strpos(Route::currentRouteName(),'admin.point') !== false) class="active" @endif>
+        <a href="{{ route('admin.point') }}"><i class="fa fa-money"></i> <span>Manage Points</span></a>
     </li>
     <li @if(strpos(Route::currentRouteName(),'admin.notify') !== false) class="active" @endif>
         <a href="{{ route('admin.notify') }}"><i class="fa fa-commenting"></i> <span>Notify user</span></a>

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class FundingController extends Controller
+class PointsController extends Controller
 {
     public function __construct()
     {
@@ -16,6 +17,7 @@ class FundingController extends Controller
 
     public function index()
     {
-        return view('admin.menu.funding.index');
+        $dataUser = User::all();
+        return view('admin.menu.funding.index',compact('dataUser'));
     }
 }

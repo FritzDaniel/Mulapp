@@ -96,7 +96,7 @@ Route::prefix('admin')->group(function ()
         Route::get('blogs/delete/{id}','BlogsController@deleteBlogs')->name('admin.blogs.delete');
 
         # Funding admin
-        Route::get('funding','FundingController@index')->name('admin.funding');
+        Route::get('point','PointsController@index')->name('admin.point');
 
         # Support admin
         Route::get('support','SupportController@index')->name('admin.support');

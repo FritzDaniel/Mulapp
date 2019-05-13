@@ -12,7 +12,7 @@
             <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-bell-o"></i>
-                    <span class="label label-warning">0</span>
+                    <span class="label label-warning">{{ $notify->where('read_at','=',null)->count() }}</span>
                 </a>
                 @include('admin.layouts.partials.notification')
             </li>

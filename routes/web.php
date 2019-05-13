@@ -95,8 +95,12 @@ Route::prefix('admin')->group(function ()
         Route::post('blogs/update/body/{id}','BlogsController@updateBlogsBody')->name('admin.blogs.update.body');
         Route::get('blogs/delete/{id}','BlogsController@deleteBlogs')->name('admin.blogs.delete');
 
-        # Funding admin
-        Route::get('point','PointsController@index')->name('admin.point');
+        # Points admin
+        Route::get('points','PointsController@index')->name('admin.points');
+        Route::get('points/topup/{id}','PointsController@topup')->name('admin.points.topup');
+        Route::post('points/update/topup/{id}','PointsController@updateTopup')->name('admin.points.update.topup');
+        Route::get('points/withdraw/{id}','PointsController@withdraw')->name('admin.points.withdraw');
+        Route::post('points/update/withdraw/{id}','PointsController@updateWithdraw')->name('admin.points.update.withdraw');
 
         # Support admin
         Route::get('support','SupportController@index')->name('admin.support');
@@ -106,6 +110,10 @@ Route::prefix('admin')->group(function ()
 
         # Notify admin
         Route::get('notify','NotifyController@index')->name('admin.notify');
+        Route::post('notify/sendAll','NotifyController@sendAll')->name('admin.notify.send_all');
+        Route::post('notify/sendSingle','NotifyController@sendSingle')->name('admin.notify.send_single');
+        Route::post('notify/sendMultiple','NotifyController@sendMultiple')->name('admin.notify.send_multiple');
+        Route::get('notify/detail/{id}','NotifyController@detail')->name('admin.notify.detail');
     });
 });
 
@@ -147,6 +155,10 @@ Route::prefix('student')->group(function ()
         Route::post('profile/update/data','ProfileController@updateData')->name('student.profile.update.data');
         Route::post('profile/update/password','ProfileController@updatePassword')->name('student.profile.update.password');
         Route::post('profile/update/displayPicture','ProfileController@updateDisplayPicture')->name('student.profile.update.displayPicture');
+
+        # Notify
+        Route::get('notify}','NotifyController@index')->name('student.index');
+        Route::get('notify/detail/{id}','NotifyController@detail')->name('student.notify.detail');
 
     });
 });

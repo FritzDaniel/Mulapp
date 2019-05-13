@@ -39,6 +39,9 @@
             cursor: text;
             padding-left: 8px;
         }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 33px !important;
+        }
     </style>
 @endsection
 

@@ -125,7 +125,10 @@
                                             <span class="label label-success">Active</span>
                                         @endif
                                     </td>
-                                    <td>{{ isset($dt->name) ? $dt->name : 'Empty name' }}</td>
+                                    <td>
+                                        @if()
+                                        {{ isset($dt->name) ? $dt->name : 'Empty name' }}
+                                    </td>
                                     <td>{{ isset($dt->username) ? $dt->username : 'Empty username' }}</td>
                                     <td>{{ isset($dt->email) ? $dt->email : 'Empty email' }}</td>
                                     <td>{{ isset($dt->phone) ? $dt->phone : 'Empty Phone Number' }}</td>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('title')
-    Mul-App | ###
+    Mul-App | Notification
 @endsection
 
 @section('css')
@@ -9,17 +9,14 @@
 @endsection
 
 @section('headerTitle')
-    ###
-    <small>###</small>
+    Notification
+    <small>Admin</small>
 @endsection
 
 @section('content')
 
     <div class="row">
         <div class="col-md-3">
-            <a href="#" class="btn btn-primary btn-block margin-bottom">
-                <i class="fa fa-circle"></i> ###
-            </a>
 
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -33,28 +30,18 @@
                 <div class="box-body no-padding">
                     <ul class="nav nav-pills nav-stacked">
                         <li>
-                            <a href="#"><i class="fa fa-circle"></i> ###
-                                <span class="label label-info pull-right">0</span>
+                            <a href="{{ route('admin.notify.viewAll') }}"><i class="fa fa-inbox"></i> All notification
+                                <span class="label label-info pull-right">{{ $nav->count() }}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="#"><i class="fa fa-circle"></i> ###
-                                <span class="label label-primary pull-right">0</span>
+                            <a href="{{ route('admin.notify.unreadable') }}"><i class="fa fa-envelope-o"></i> Unread notification
+                                <span class="label label-primary pull-right">{{ $nav->where('read_at','=',null)->count() }}</span>
                             </a>
                         </li>
                         <li>
-                            <a href="#" id="#"><i class="fa fa-circle"></i> ###
-                                <span class="label label-warning pull-right">0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" id="#"><i class="fa fa-circle"></i> ###
-                                <span class="label label-success pull-right">0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" id="#"><i class="fa fa-circle"></i> ###
-                                <span class="label label-danger pull-right">0</span>
+                            <a href="{{ route('admin.notify.readable') }}"><i class="fa fa-envelope-open-o"></i> Read notification
+                                <span class="label label-warning pull-right">{{ $nav->where('read_at','<>',null)->count() }}</span>
                             </a>
                         </li>
                     </ul>
@@ -68,10 +55,11 @@
         <div class="col-md-9">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">###</h3>
+                    <h3 class="box-title">Notification List</h3>
 
                     <div class="box-tools">
-                        <form action="#" class="input-group input-group-sm" style="width: 150px;" method="GET">
+                        <form action="{{ route('admin.notify.viewAll') }}"
+                              class="input-group input-group-sm" style="width: 150px;" method="GET" autocomplete="off">
                             <input type="text" name="search" class="form-control pull-right" placeholder="Search">
 
                             <div class="input-group-btn">
@@ -82,31 +70,54 @@
                     <!-- /.box-tools -->
                 </div>
                 <!-- /.box-header -->
+                @if($data->isEmpty())
 
+                    <div class="box-body">
+                        Empty Notification!
+                    </div>
+
+                @else
                 <div class="box-body no-padding">
                     <div class="table-responsive mailbox-messages">
                         <table class="table table-hover table-striped">
                             <thead>
                             <tr>
-                                <th>###</th>
-                                <th>###</th>
-                                <th>###</th>
+                                <th>No</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>###</td>
-                                <td>###</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                    <a href="#" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                                </td>
-                            </tr>
+                            @foreach($data as $key => $dt)
+                                <tr>
+                                    <td>{{ $key+1 }}.</td>
+                                    <td>
+                                        @if($dt->read_at == null)
+                                            <b>{{ isset($keyword) ? $dt->title : $dt->notify->title }}</b> <small class="label bg-green" style="margin-left: 10px;">new</small>
+                                        @else
+                                            {{ isset($keyword) ? $dt->title : $dt->notify->title }}
+                                        @endif
+                                    </td>
+                                    <td>{{ isset($dt) ? \Carbon\Carbon::parse($dt->created_at)->format('d-M-Y') : '' }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.notify.read',['id' => isset($keyword) ? $dt->id : $dt->id ,'title' => isset($keyword) ? $dt->title : $dt->notify->title ]) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <!-- /.table -->
                     </div>
+                    @if(!empty($keyword))
+
+                    @else
+                        <div class="text-center">
+                            {{ $data->links() }}
+                        </div>
+                    @endif
                 </div>
+                @endif
                 <!-- /.box-body -->
             </div>
             <!-- /. box -->

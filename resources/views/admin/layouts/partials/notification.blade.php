@@ -15,17 +15,17 @@
             <ul class="menu">
                 @foreach($notify as $notification)
                     <li>
-                        <a href="{{ route('student.notify.detail',$notification->notify_id) }}">
+                        <a href="{{ route('admin.notify.read',['id' => $notification->notify_id ,'title' => $notification->notify->title]) }}">
                             @if($notification->read_at == null)
-                                <i class="fa fa-sticky-note"></i> <b>{{ isset($notification) ? $notification->notify->title : '' }}</b> <small class="label pull-right bg-green">new</small>
+                                <i class="fa fa-envelope"></i> <b>{{ isset($notification) ? $notification->notify->title : '' }}</b> <small class="label pull-right bg-green">new</small>
                             @else
-                                <i class="fa fa-sticky-note"></i> {{ isset($notification) ? $notification->notify->title : '' }}
+                                <i class="fa fa-envelope-open-o"></i> {{ isset($notification) ? $notification->notify->title : '' }}
                             @endif
                         </a>
                     </li>
                 @endforeach
             </ul>
         </li>
-        <li class="footer"><a href="#">View all</a></li>
+        <li class="footer"><a href="{{ route('admin.notify.viewAll') }}">View all</a></li>
     @endif
 </ul>

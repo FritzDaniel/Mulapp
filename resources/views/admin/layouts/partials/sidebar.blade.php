@@ -36,7 +36,7 @@
         <a href="{{ route('admin.points') }}"><i class="fa fa-money"></i> <span>Manage Points</span></a>
     </li>
     <li @if(strpos(Route::currentRouteName(),'admin.notify') !== false) class="active" @endif>
-        <a href="{{ route('admin.notify') }}"><i class="fa fa-bell"></i> <span>Notify user</span></a>
+        <a href="{{ route('admin.notify') }}"><i class="fa fa-envelope"></i> <span>Notification</span></a>
     </li>
     <li @if(strpos(Route::currentRouteName(),'admin.statistic') !== false) class="active" @endif>
         <a href="{{ route('admin.statistic') }}"><i class="fa fa-line-chart"></i> <span>Statistic</span></a>

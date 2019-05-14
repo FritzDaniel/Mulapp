@@ -114,6 +114,11 @@ Route::prefix('admin')->group(function ()
         Route::post('notify/sendSingle','NotifyController@sendSingle')->name('admin.notify.send_single');
         Route::post('notify/sendMultiple','NotifyController@sendMultiple')->name('admin.notify.send_multiple');
         Route::get('notify/detail/{id}','NotifyController@detail')->name('admin.notify.detail');
+
+        Route::get('notify/read/{id}/{title}','NotifyController@read')->name('admin.notify.read');
+        Route::get('notify/viewAll','NotifyController@viewAll')->name('admin.notify.viewAll');
+        Route::get('notify/readable','NotifyController@readableTable')->name('admin.notify.readable');
+        Route::get('notify/unreadable','NotifyController@unreadableTable')->name('admin.notify.unreadable');
     });
 });
 
@@ -158,7 +163,7 @@ Route::prefix('student')->group(function ()
 
         # Notify
         Route::get('notify}','NotifyController@index')->name('student.index');
-        Route::get('notify/detail/{id}','NotifyController@detail')->name('student.notify.detail');
+        Route::get('notify/read/{id}','NotifyController@read')->name('student.notify.read');
 
     });
 });

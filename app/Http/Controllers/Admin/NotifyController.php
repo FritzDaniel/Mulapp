@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Listeners\UpdateReadAt;
 use App\Models\Notify;
 use App\Models\NotifyList;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NotifyController extends Controller
 {
@@ -29,6 +32,86 @@ class NotifyController extends Controller
         $data = Notify::find($id);
         $dataNotify = NotifyList::where('notify_id','=',$data->id)->get();
         return view('admin.menu.notify.detail',compact('data','dataNotify'));
+    }
+
+    public function viewAll(Request $request)
+    {
+        $nav = NotifyList::where('user_id','=',Auth::user()->id)->get();
+
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)){
+            $data = DB::table('notify_list')
+                ->join('notifies', 'notify_list.notify_id', '=', 'notifies.id')
+                ->select('notify_list.id','notifies.title','notify_list.read_at','notify_list.created_at','notify_list.user_id')
+                ->where('notifies.title', 'LIKE', "%$keyword%")
+                ->where('notify_list.user_id','=',Auth::user()->id)
+                ->orderBy('created_at','DESC')
+                ->get();
+        } else {
+            $data = NotifyList::where('user_id','=',Auth::user()->id)
+                ->orderBy('created_at','DESC')
+                ->paginate(10);
+        }
+
+        return view('admin.menu.notify.viewAll',compact('data','keyword','nav'));
+    }
+
+    public function readableTable(Request $request)
+    {
+        $nav = NotifyList::where('user_id','=',Auth::user()->id)->get();
+
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)){
+            $data = DB::table('notify_list')
+                ->join('notifies', 'notify_list.notify_id', '=', 'notifies.id')
+                ->select('notify_list.id','notifies.title','notify_list.read_at','notify_list.created_at','notify_list.user_id')
+                ->where('notifies.title', 'LIKE', "%$keyword%")
+                ->where('notify_list.user_id','=',Auth::user()->id)
+                ->where('read_at','<>',null)
+                ->orderBy('created_at','DESC')
+                ->get();
+        } else {
+            $data = NotifyList::where('user_id','=',Auth::user()->id)
+                ->where('read_at','<>',null)
+                ->orderBy('created_at','DESC')
+                ->paginate(10);
+        }
+
+        return view('admin.menu.notify.viewAll_readable',compact('data','keyword','nav'));
+    }
+
+    public function unreadableTable(Request $request)
+    {
+        $nav = NotifyList::where('user_id','=',Auth::user()->id)->get();
+
+        $keyword = $request->get('search');
+
+        if (!empty($keyword)){
+            $data = DB::table('notify_list')
+                ->join('notifies', 'notify_list.notify_id', '=', 'notifies.id')
+                ->select('notify_list.id','notifies.title','notify_list.read_at','notify_list.created_at','notify_list.user_id')
+                ->where('notifies.title', 'LIKE', "%$keyword%")
+                ->where('notify_list.user_id','=',Auth::user()->id)
+                ->where('read_at','=',null)
+                ->orderBy('created_at','DESC')
+                ->get();
+        } else {
+            $data = NotifyList::where('user_id','=',Auth::user()->id)
+                ->where('read_at','=',null)
+                ->orderBy('created_at','DESC')
+                ->paginate(10);
+        }
+
+        return view('admin.menu.notify.viewAll_unreadable',compact('data','keyword','nav'));
+    }
+
+    public function read($id,$title)
+    {
+        $data = NotifyList::where('notify_id','=',$id)->first();
+        event(new UpdateReadAt($data));
+        return view('admin.menu.notify.read',compact('data'));
     }
 
     public function sendAll(Request $request)

@@ -15,7 +15,7 @@
             <ul class="menu">
                 @foreach($notify as $notification)
                     <li>
-                        <a href="{{ route('student.notify.detail',$notification->notify_id) }}">
+                        <a href="{{ route('student.notify.read',$notification->notify_id) }}">
                             @if($notification->read_at == null)
                                 <i class="fa fa-sticky-note"></i> <b>{{ isset($notification) ? $notification->notify->title : '' }}</b> <small class="label pull-right bg-green">new</small>
                             @else

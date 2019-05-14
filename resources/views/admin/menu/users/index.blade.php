@@ -126,7 +126,6 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if()
                                         {{ isset($dt->name) ? $dt->name : 'Empty name' }}
                                     </td>
                                     <td>{{ isset($dt->username) ? $dt->username : 'Empty username' }}</td>

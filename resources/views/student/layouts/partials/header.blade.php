@@ -11,8 +11,8 @@
         <ul class="nav navbar-nav">
             <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-bell-o"></i>
-                    <span class="label label-warning">{{ $notify->where('read_at','=',null)->count() }}</span>
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="label label-warning">{{ isset($notify) ? $notify->where('read_at','=',null)->count() : '0' }}</span>
                 </a>
                 @include('student.layouts.partials.notification')
             </li>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('student.layouts.app')
 
 @section('title')
     MulApp | Notification
@@ -10,13 +10,13 @@
 
 @section('headerTitle')
     Notification
-    <small>Admin</small>
+    <small>Student</small>
 @endsection
 
 @section('content')
 
     <div class="margin-b10">
-        <a href="{{ route('admin.notify.viewAll') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="{{ route('student.notify.viewAll') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
     <div class="box">

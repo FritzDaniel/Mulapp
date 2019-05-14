@@ -9,7 +9,7 @@
 @endsection
 
 @section('headerTitle')
-    Notify User
+    Notification
     <small>Admin</small>
 @endsection
 

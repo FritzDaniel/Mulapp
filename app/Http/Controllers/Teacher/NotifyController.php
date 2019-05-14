@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers\Teacher;
 
 use App\Listeners\UpdateReadAt;
 use App\Models\NotifyList;
@@ -14,7 +14,7 @@ class NotifyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('student');
+        $this->middleware('teacher');
         $this->middleware('active');
     }
 
@@ -38,7 +38,7 @@ class NotifyController extends Controller
                 ->paginate(10);
         }
 
-        return view('student.menu.notify.viewAll',compact('data','keyword','nav'));
+        return view('teacher.menu.notify.viewAll',compact('data','keyword','nav'));
     }
 
     public function readableTable(Request $request)
@@ -63,7 +63,7 @@ class NotifyController extends Controller
                 ->paginate(10);
         }
 
-        return view('student.menu.notify.viewAll_readable',compact('data','keyword','nav'));
+        return view('teacher.menu.notify.viewAll_readable',compact('data','keyword','nav'));
     }
 
     public function unreadableTable(Request $request)
@@ -88,7 +88,7 @@ class NotifyController extends Controller
                 ->paginate(10);
         }
 
-        return view('student.menu.notify.viewAll_unreadable',compact('data','keyword','nav'));
+        return view('teacher.menu.notify.viewAll_unreadable',compact('data','keyword','nav'));
     }
 
     public function read($id)
@@ -96,6 +96,6 @@ class NotifyController extends Controller
         $data = NotifyList::find($id);
 
         event(new UpdateReadAt($data));
-        return view('student.menu.notify.read',compact('data'));
+        return view('teacher.menu.notify.read',compact('data'));
     }
 }

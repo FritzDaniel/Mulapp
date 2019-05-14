@@ -140,6 +140,12 @@ Route::prefix('teacher')->group(function ()
         Route::post('profile/update/password','ProfileController@updatePassword')->name('teacher.profile.update.password');
         Route::post('profile/update/displayPicture','ProfileController@updateDisplayPicture')->name('teacher.profile.update.displayPicture');
 
+        Route::get('notify/viewAll','NotifyController@viewAll')->name('teacher.notify.viewAll');
+        Route::get('notify/readable','NotifyController@readableTable')->name('teacher.notify.readable');
+        Route::get('notify/unreadable','NotifyController@unreadableTable')->name('teacher.notify.unreadable');
+
+        Route::get('notify/read/{id}/{title}','NotifyController@read')->name('teacher.notify.read');
+
     });
 });
 
@@ -162,8 +168,11 @@ Route::prefix('student')->group(function ()
         Route::post('profile/update/displayPicture','ProfileController@updateDisplayPicture')->name('student.profile.update.displayPicture');
 
         # Notify
-        Route::get('notify}','NotifyController@index')->name('student.index');
-        Route::get('notify/read/{id}','NotifyController@read')->name('student.notify.read');
+        Route::get('notify/viewAll','NotifyController@viewAll')->name('student.notify.viewAll');
+        Route::get('notify/readable','NotifyController@readableTable')->name('student.notify.readable');
+        Route::get('notify/unreadable','NotifyController@unreadableTable')->name('student.notify.unreadable');
+
+        Route::get('notify/read/{id}/{title}','NotifyController@read')->name('student.notify.read');
 
     });
 });

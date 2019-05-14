@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('teacher.layouts.app')
 
 @section('title')
     MulApp | Notification
@@ -10,13 +10,13 @@
 
 @section('headerTitle')
     Notification
-    <small>Admin</small>
+    <small>Teacher</small>
 @endsection
 
 @section('content')
 
     <div class="margin-b10">
-        <a href="{{ route('admin.notify.viewAll') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="{{ route('teacher.notify.viewAll') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
     </div>
 
     <div class="box">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="box-body">
-            <h5>To : {{ $data->user->name }}</h5>
+            <h5>To : {{ $data->user->name }} </h5>
             <h5>From : Admin</h5>
             <h5>Date : {{ \Carbon\Carbon::parse($data->created_at)->format('d-M-Y') }}</h5>
             <br>

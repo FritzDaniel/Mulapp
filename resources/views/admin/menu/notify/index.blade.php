@@ -62,6 +62,16 @@
         </div>
     @endif
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> There were some problems with your input!</h4>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-6">
             <div class="box">
@@ -223,15 +233,50 @@
     </script>
 
     <script>
+
         $('#btn_1').on('click',function () {
+            sessionStorage.setItem('selected','form_1');
             $('#form_1').submit();
         });
         $('#btn_2').on('click',function () {
+            sessionStorage.setItem('selected','form_2');
             $('#form_2').submit();
         });
         $('#btn_3').on('click',function () {
+            sessionStorage.setItem('selected','form_3');
             $('#form_3').submit();
         });
+
+        if (sessionStorage.getItem('selected') == "form_1")
+        {
+            $("#sendForm").val("1");
+            $('#form_1').show();
+            $('#form_2').hide();
+            $('#form_3').hide();
+            $('#btn_1').show();
+            $('#btn_2').hide();
+            $('#btn_3').hide();
+        }
+        else if(sessionStorage.getItem('selected') == "form_2")
+        {
+            $("#sendForm").val("2");
+            $('#form_1').hide();
+            $('#form_2').show();
+            $('#form_3').hide();
+            $('#btn_1').hide();
+            $('#btn_2').show();
+            $('#btn_3').hide();
+        }
+        else if(sessionStorage.getItem('selected') == "form_3")
+        {
+            $("#sendForm").val("3");
+            $('#form_1').hide();
+            $('#form_2').hide();
+            $('#form_3').show();
+            $('#btn_1').hide();
+            $('#btn_2').hide();
+            $('#btn_3').show();
+        }
     </script>
 
 @endsection

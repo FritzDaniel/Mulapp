@@ -1,15 +1,15 @@
 <form id="form_3" class="fpms" method="POST" action="{{ route('admin.notify.send_multiple') }}" autocomplete="off" style="display: none">
     @csrf
 
-    <div class="form-group{{ $errors->has('user_id') ? ' has-error' : ' has-feedback' }}">
+    <div class="form-group{{ $errors->has('users') ? ' has-error' : ' has-feedback' }}">
         <label>Select User</label>
         <select class="form-control select2 select2-hidden-accessible"
-                name="user_id[]" multiple="multiple" style="width: 100%;"
+                name="users[]" multiple="multiple" style="width: 100%;"
                 tabindex="-1" aria-hidden="true" id="form3_selectUser">
             @foreach($users as $user)
                 <option value="{{ $user->id }}"
-                    @if(old('user_id'))
-                        @foreach(old('user_id') as $oldSelected)
+                    @if(old('users'))
+                        @foreach(old('users') as $oldSelected)
                             @if($user->name == $oldSelected)
                                 selected
                             @elseif($user->id == $oldSelected)
@@ -24,9 +24,9 @@
             @endforeach
         </select>
 
-        @if ($errors->has('user_id'))
+        @if ($errors->has('users'))
             <span class="help-block">
-                <strong>{{ $errors->first('user_id') }}</strong>
+                <strong>{{ $errors->first('users') }}</strong>
             </span>
         @endif
     </div>

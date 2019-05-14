@@ -168,7 +168,7 @@ class NotifyController extends Controller
         $this->validate($request,[
             'title' => ['required','string'],
             'body' => ['required'],
-            'user_id' => ['required']
+            'users' => ['required']
         ]);
 
         $send = new Notify();
@@ -177,7 +177,7 @@ class NotifyController extends Controller
         $send->body = $request['body'];
         $send->save();
 
-        foreach ($request['user_id'] as $users)
+        foreach ($request['users'] as $users)
         {
             $sendMultiple = [
                 'notify_id' => $send->id,

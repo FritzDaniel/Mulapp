@@ -146,6 +146,19 @@ Route::prefix('teacher')->group(function ()
 
         Route::get('notify/read/{id}/{title}','NotifyController@read')->name('teacher.notify.read');
 
+        Route::get('article','ArticleController@index')->name('teacher.article');
+        Route::get('article/add','ArticleController@add')->name('teacher.article.add');
+        Route::post('article/store','ArticleController@storeBlogs')->name('teacher.article.store');
+
+
+        Route::group(['middleware' => 'article.owner'], function () {
+            Route::get('article/detail/{id}','ArticleController@detailBlogs')->name('teacher.article.detail');
+            Route::get('article/edit/{id}','ArticleController@editBlogs')->name('teacher.article.edit');
+            Route::post('article/update/data/{id}','ArticleController@updateBlogsData')->name('teacher.article.update.data');
+            Route::post('article/update/thumbnail/{id}','ArticleController@updateBlogsThumbnail')->name('teacher.article.update.thumbnail');
+            Route::post('article/update/body/{id}','ArticleController@updateBlogsBody')->name('teacher.article.update.body');
+            Route::get('article/delete/{id}','ArticleController@deleteBlogs')->name('teacher.article.delete');
+        });
     });
 });
 

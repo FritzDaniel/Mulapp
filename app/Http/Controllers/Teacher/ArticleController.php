@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Teacher;
 
 use App\Models\Blog\Blogs;
 use App\Models\Blog\BlogsTags;
@@ -12,41 +12,43 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class BlogsController extends Controller
+class ArticleController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin');
+        $this->middleware('teacher');
         $this->middleware('active');
     }
 
-    // Blogs
-
     public function index(Request $request)
     {
-        $nav = Blogs::all();
+        $nav = Blogs::where('user_id','=',Auth::user()->id)->get();
 
         $keyword = $request->get('search');
 
         if (!empty($keyword)){
             $data = DB::table('blogs')
                 ->join('users', 'blogs.user_id', '=', 'users.id')
-                ->select('blogs.id','users.name','blogs.title','blogs.created_at')
+                ->select('blogs.user_id','blogs.id','users.name','blogs.title','blogs.created_at')
                 ->where('users.name', 'LIKE', "%$keyword%")
                 ->orWhere('blogs.title', 'LIKE', "%$keyword%")
+                ->where('blogs.user_id','=',Auth::user()->id)
                 ->get();
         } else {
-            $data = Blogs::orderBy('created_at','DESC')->paginate(10);
+            $data = Blogs::where('user_id','=',Auth::user()->id)
+                ->orderBy('created_at','DESC')
+                ->paginate(10);
         }
-        return view('admin.menu.blogs.index',compact('data','keyword','nav'));
+        return view('teacher.menu.articles.index',compact('data','keyword','nav'));
     }
 
     public function detailBlogs($id)
     {
-        $data = Blogs::find($id);
+        $data = Blogs::where('id','=',$id)
+            ->first();
         $dataTags = BlogsTags::where('blogs_id','=',$id)->get();
-        return view('admin.menu.blogs.detail',compact('data','dataTags'));
+        return view('teacher.menu.articles.detail',compact('data','dataTags'));
     }
 
     public function editBlogs($id)
@@ -56,14 +58,14 @@ class BlogsController extends Controller
         $data = Blogs::find($id);
         $tagsData = BlogsTags::where('blogs_id','=',$data->id)->get();
 
-        return view('admin.menu.blogs.edit',compact('data','cat','tags','tagsData'));
+        return view('teacher.menu.articles.edit',compact('data','cat','tags','tagsData'));
     }
 
     public function add()
     {
         $tags = Tags::orderBy('tags','ASC')->get();
         $cat = Category::all();
-        return view('admin.menu.blogs.add',compact('cat','tags'));
+        return view('teacher.menu.articles.add',compact('cat','tags'));
     }
 
     // Store Blogs
@@ -105,7 +107,7 @@ class BlogsController extends Controller
             BlogsTags::create($storeTags);
         }
 
-        return redirect()->route('admin.blogs.index')->with('status','Article has been successfully created!');
+        return redirect()->route('teacher.article')->with('status','Article has been successfully created!');
     }
 
     public function updateBlogsData(Request $request ,$id)
@@ -200,7 +202,7 @@ class BlogsController extends Controller
         $dataTags = BlogsTags::where('blogs_id','=',$id)->get();
         foreach ($dataTags as $tags)
         {
-            $deleteData = BlogsTags::find($tags->id);
+            $deleteData = BlogTags::find($tags->id);
             $deleteData->delete();
         }
         $data->delete();

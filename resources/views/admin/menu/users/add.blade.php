@@ -142,6 +142,11 @@
                 </div>
             </form>
         </div>
+
+        <div id="overlay" class="overlay" style="display: none">
+            <i class="fa fa-refresh fa-spin"></i>
+        </div>
+
         <div class="box-footer">
             <button id="addDataSubmit" type="submit" class="btn btn-primary bpms">
                 Save
@@ -166,6 +171,7 @@
 
     <script>
         $('#addDataSubmit').on('click',function(){
+            $('#overlay').show();
             $('#addData').submit();
         });
     </script>

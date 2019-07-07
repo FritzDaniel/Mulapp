@@ -69,6 +69,8 @@ class Kernel extends HttpKernel
         'teacher' => TeacherMiddleware::class,
         'student' => StudentMiddleware::class,
         'article.owner' => \App\Http\Middleware\ArticleOwnerMiddleware::class,
+        'course_data.owner' => \App\Http\Middleware\CourseDataOwnerMiddleware::class,
+        'course_videos.owner' => \App\Http\Middleware\CourseVideoOwnerMiddleware::class,
     ];
 
     /**

@@ -37,15 +37,15 @@
         <a href="#"><i class="fa fa-play-circle"></i> <span>Saved courses</span></a>
     </li>
     <li>
-        <a href="#"><i class="fa fa-question-circle"></i> <span>Ask a questions</span></a>
+        <a href="{{ route('student.discussion') }}"><i class="fa fa-comment"></i> <span>Disussion</span></a>
     </li>
-    <li class="header">Jobs (Coming soon)</li>
-    <li>
-        <a href="#"><i class="fa fa-search"></i> <span>Find a job <small>( Coming soon )</small></span></a>
-    </li>
-    <li>
-        <a href="#"><i class="fa fa-briefcase"></i> <span>Applied job list <small>( Coming soon )</small></span></a>
-    </li>
+    {{--<li class="header">Jobs (Coming soon)</li>--}}
+    {{--<li>--}}
+        {{--<a href="#"><i class="fa fa-search"></i> <span>Find a job <small>( Coming soon )</small></span></a>--}}
+    {{--</li>--}}
+    {{--<li>--}}
+        {{--<a href="#"><i class="fa fa-briefcase"></i> <span>Applied job list <small>( Coming soon )</small></span></a>--}}
+    {{--</li>--}}
     <li class="header">Support</li>
     <li>
         <a href="#"><i class="fa fa-bullhorn"></i> <span>Report a bug</span></a>

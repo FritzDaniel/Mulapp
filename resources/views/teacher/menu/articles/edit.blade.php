@@ -96,7 +96,7 @@
 
     <script src="{{ asset('assets/adminLTE/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
-    <script src="{{ asset('assets/adminLTE//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+    <script src="{{ asset('assets/adminLTE/plugins/bootstrap-wysihtml5/html5editor-fixed.js') }}"></script>
 
     <script>
         $('#updateDataSubmit').on('click',function(){

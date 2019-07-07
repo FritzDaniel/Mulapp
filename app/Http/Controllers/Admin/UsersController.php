@@ -54,6 +54,7 @@ class UsersController extends Controller
             'dob' => ['required','date'],
             'roles' => ['required'],
         ]);
+
         $store = new User();
         $store->name = $request['name'];
         $store->username = $request['username'];

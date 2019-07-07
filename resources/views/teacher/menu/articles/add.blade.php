@@ -161,7 +161,7 @@
                 <div class="form-group{{ $errors->has('body') ? ' has-error' : ' has-feedback' }}">
                     <label>Body *</label>
                     <textarea class="textarea" id="body" name="body"
-                              style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px;"
+                              style="width: 100%; height: 300px; font-size: 14px; line-height: 18px; border: 1px solid rgb(221, 221, 221); padding: 10px;"
                               placeholder="Place some text here">
                         {{ old('body') }}
                     </textarea>
@@ -205,8 +205,7 @@
 @section('js')
 
     <script src="{{ asset('assets/adminLTE/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
-
-    <script src="{{ asset('assets/adminLTE//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+    <script src="{{ asset('assets/adminLTE/plugins/bootstrap-wysihtml5/html5editor-fixed.js') }}"></script>
 
     <script>
         $('#addArticleSubmit').on('click',function(){
@@ -234,7 +233,16 @@
 
     <script>
         $(function () {
-            $('#body').wysihtml5()
+            $('#body').wysihtml5({
+                "font-styles": true, //Font styling, e.g. h1, h2, etc. Default true
+                "emphasis": true, //Italics, bold, etc. Default true
+                "lists": true, //(Un)ordered lists, e.g. Bullets, Numbers. Default true
+                "html": false, //Button which allows you to edit the generated HTML. Default false
+                "link": false, //Button to insert a link. Default true
+                "image": true, //Button to insert an image. Default true,
+                "color": true, //Button to change color of font
+                "blockquote": true, //Blockquote
+            });
         })
     </script>
 

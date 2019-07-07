@@ -17,7 +17,7 @@
         <form id="updateThumbnail" action="{{ route('teacher.article.update.thumbnail',$data->id) }}"
               method="POST" autocomplete="off" enctype="multipart/form-data">
             @csrf
-            <div class="form-groupt text-left" style="margin-top: 10px;">
+            <div class="form-group text-left" style="margin-top: 10px;">
                 <label for="exampleInputFile">Thumbnail</label>
                 <input type="file" class="form-control" name="thumbnail">
 

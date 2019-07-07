@@ -103,7 +103,7 @@
                 <div class="form-group{{ $errors->has('category') ? ' has-error' : ' has-feedback' }}">
                     <label>Category *</label>
                     <select class="form-control select2 select2-hidden-accessible" name="category"
-                            style="width: 100%;" tabindex="-1" aria-hidden="true" id="categoryInput">
+                            style="width: 100%;" tabindex="-1" aria-hidden="true" id="category">
                         <option value="">Select category</option>
                         @foreach($cat as $cats)
                             <option value="{{ $cats->id }}"
@@ -206,7 +206,7 @@
 
     <script src="{{ asset('assets/adminLTE/bower_components/select2/dist/js/select2.full.min.js') }}"></script>
 
-    <script src="{{ asset('assets/adminLTE//plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+    <script src="{{ asset('assets/adminLTE//plugins/bootstrap-wysihtml5/html5editor-fixed.js') }}"></script>
 
     <script>
         $('#addArticleSubmit').on('click',function(){

@@ -11,7 +11,7 @@
         </div>
 
         <div class="register-box-body">
-            <p class="login-box-msg">Register a new membership</p>
+            <p class="login-box-msg">Register a new student</p>
 
             <form class="fpms" action="{{ route('register') }}" method="POST" autocomplete="off">
                 @csrf

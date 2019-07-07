@@ -14,7 +14,9 @@ Route::group(['namespace' => 'Landing'], function()
 {
     # Landing page route
     Route::get('/', 'LandingController@index')->name('landing');
+    Route::get('/register/teacher','LandingController@registerTeacher')->name('landing.registerTeacher');
 
+    Route::post('store/teacher','LandingController@storeTeacher')->name('store.teacher');
 });
 
 Auth::routes();
@@ -150,7 +152,6 @@ Route::prefix('teacher')->group(function ()
         Route::get('article/add','ArticleController@add')->name('teacher.article.add');
         Route::post('article/store','ArticleController@storeBlogs')->name('teacher.article.store');
 
-
         Route::group(['middleware' => 'article.owner'], function () {
             Route::get('article/detail/{id}','ArticleController@detailBlogs')->name('teacher.article.detail');
             Route::get('article/edit/{id}','ArticleController@editBlogs')->name('teacher.article.edit');
@@ -159,6 +160,24 @@ Route::prefix('teacher')->group(function ()
             Route::post('article/update/body/{id}','ArticleController@updateBlogsBody')->name('teacher.article.update.body');
             Route::get('article/delete/{id}','ArticleController@deleteBlogs')->name('teacher.article.delete');
         });
+
+        Route::get('courses','CoursesController@index')->name('teacher.courses');
+        Route::get('courses/add','CoursesController@add')->name('teacher.courses.add');
+        Route::post('courses/storeCourses','CoursesController@storeCourse')->name('teacher.courses.storeCourse');
+
+        Route::group(['middleware' => 'course_data.owner'], function () {
+            Route::get('courses/details/{id}','CoursesController@detailCourse')->name('teacher.courses.detailCourses');
+            Route::post('courses/update/data/{id}','CoursesController@editCourseData')->name('teacher.courses.editDataCourse');
+            Route::post('courses/update/thumbnail/{id}','CoursesController@editCourseThumbnail')->name('teacher.courses.editDataThumbnail');
+        });
+
+        Route::group(['middleware' => 'course_videos.owner'], function () {
+            Route::get('courses/videoCourse/{id}','CoursesController@editVideoCourse')->name('teacher.courses.video');
+            Route::get('course/videoCourse/{id}/detail/{slug}','CoursesController@videoDetail')->name('teacher.course.video.detail');
+        });
+
+        Route::get('courses/videoCourse/add/{id}','CoursesController@addVideoCourse')->name('teacher.courses.video.add');
+        Route::post('courses/videoCourse/store/{id}','CoursesController@storeVideoCourse')->name('teacher.courses.video.store');
     });
 });
 
@@ -187,5 +206,8 @@ Route::prefix('student')->group(function ()
 
         Route::get('notify/read/{id}/{title}','NotifyController@read')->name('student.notify.read');
 
+        Route::get('discussion','DiscussionController@index')->name('student.discussion');
+        Route::get('discussion/add','DiscussionController@add')->name('student.discussion.add');
+        Route::post('discussion/store','DiscussionController@store')->name('student.discussion.store');
     });
 });

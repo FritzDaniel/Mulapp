@@ -156,7 +156,7 @@ class ArticleController extends Controller
 
         if ($request->hasFile('thumbnail')) {
             if ($request->file('thumbnail')->isValid()) {
-                $name = Auth::user()->name . '_' . Carbon::now()->timestamp . '.' . $request->file('thumbnail')->getClientOriginalExtension();
+                $name = Auth::user()->name . '_article_'. '_' . Carbon::now()->timestamp . '.' . $request->file('thumbnail')->getClientOriginalExtension();
                 $store_path = 'thumbnail/';
                 $path = $request->file('thumbnail')->storeAs($store_path, $name);
             }
